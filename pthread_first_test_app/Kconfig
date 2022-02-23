@@ -1,0 +1,25 @@
+
+config PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP
+	tristate "My first pthread test app"
+	default y
+	---help---
+		Enable the pthread_first_test_app app
+
+if PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP
+
+config PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP_PROGNAME
+	string "Program name"
+	default "pthread_first_test_app"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP_PRIORITY
+	int "pthread_first_test_app task priority"
+	default 100
+
+config PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP_STACKSIZE
+	int "pthread_first_test_app stack size"
+	default 2048
+
+endif

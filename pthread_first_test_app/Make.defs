@@ -1,0 +1,4 @@
+
+ifneq ($(CONFIG_PTHREAD_FIRST_TEST_PTHREAD_FIRST_TEST_APP),)
+CONFIGURED_APPS += pthread_first_test_app
+endif
