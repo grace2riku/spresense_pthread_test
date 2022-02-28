@@ -1,5 +1,6 @@
 #include <nuttx/config.h>
 #include <stdio.h>
+#include <stdlib.h> // exit
 
 #include <arch/board/board.h>
 #include <arch/chip/pin.h>
@@ -32,7 +33,7 @@ void* blink_led(void* arg) {
 
   printf("start blink_led[%ld] thread ID = %d switch_status = %d.\n", led_index, pthread_self(), switch_status);
 
-  while (switch_status == 1) {  // スイッチ押下されたループから抜ける
+  while (switch_status == 1) {  // スイッチ押下されたらループから抜ける
     board_gpio_write(aps_board_led_pin[led_index], led_value);
     sleep(sleep_sec);
     led_value ^= 1;
@@ -59,12 +60,14 @@ int main(int argc, FAR char *argv[])
   for (i = 0; i < THREAD_NUM; i++) {
     if(pthread_create(&thread[i], NULL, blink_led, (void*)i) != 0) {
       printf("Error; pthread_create[%d].\n", i);
+      exit(1);
     }
   }  
 
   for (i = 0; i < THREAD_NUM; i++){
     if (pthread_join(thread[i], (void**)&ret[i]) != 0) {
       printf("Error; pthread_join[%d].\n", i);
+      exit(1);
     }
     printf("exit thread[%d] thread ID = %d return value = %d\n", i, pthread_self(), ret[i]);
   }
