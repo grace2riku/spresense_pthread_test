@@ -1,0 +1,25 @@
+
+config PTHREAD_TEST_PTHREAD_MUTEX
+	tristate "“pthreads_mutex_test_app”"
+	default y
+	---help---
+		Enable the pthread_mutex app
+
+if PTHREAD_TEST_PTHREAD_MUTEX
+
+config PTHREAD_TEST_PTHREAD_MUTEX_PROGNAME
+	string "Program name"
+	default "pthread_mutex"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config PTHREAD_TEST_PTHREAD_MUTEX_PRIORITY
+	int "pthread_mutex task priority"
+	default 100
+
+config PTHREAD_TEST_PTHREAD_MUTEX_STACKSIZE
+	int "pthread_mutex stack size"
+	default 2048
+
+endif

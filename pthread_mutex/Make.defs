@@ -1,0 +1,4 @@
+
+ifneq ($(CONFIG_PTHREAD_TEST_PTHREAD_MUTEX),)
+CONFIGURED_APPS += pthread_mutex
+endif
