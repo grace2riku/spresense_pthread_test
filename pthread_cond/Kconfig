@@ -1,0 +1,25 @@
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND
+	tristate "“cond_test”"
+	default y
+	---help---
+		Enable the pthread_cond app
+
+if SPRESENSE_PTHREAD_TEST_PTHREAD_COND
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_PROGNAME
+	string "Program name"
+	default "pthread_cond"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_PRIORITY
+	int "pthread_cond task priority"
+	default 100
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_STACKSIZE
+	int "pthread_cond stack size"
+	default 2048
+
+endif
