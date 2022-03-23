@@ -27,7 +27,7 @@ const int aps_board_switch_pin_3[2] = {
 };
 
 void* thread_cond_signal_func(void* arg) {
-  uint32_t switch_index = (uint32_t)arg;
+  int switch_index = (uint32_t)arg;
 
   volatile int switch_status = board_gpio_read(aps_board_switch_pin_3[switch_index]);
 
@@ -38,17 +38,15 @@ void* thread_cond_signal_func(void* arg) {
 
   pthread_cond_signal(&switch_cond[switch_index]);
 
-  printf("switch[%d] pushed!!! cond_signal[%d] set.\n", switch_index + 1, switch_index);
+  printf("thread_cond_signal[%d]:switch[%d] pushed!!!cond_signal[%d] set.\n", switch_index, switch_index + 1, switch_index);
 
   return (void*)switch_index;
 }
 
 void* thread_cond_wait_func(void* arg) {
-  uint32_t switch_index = (uint32_t)arg;
+  int switch_index = (uint32_t)arg;
 
-  volatile int switch_status = board_gpio_read(aps_board_switch_pin_3[switch_index]);
-
-  printf("cond_wait[%d]...\n", switch_index);
+  printf("thread_cond_wait[%d]:cond_wait[%d]...\n", switch_index, switch_index);
 
   // 条件待ち
   pthread_mutex_lock(&switch_mutex[switch_index]);
@@ -58,7 +56,7 @@ void* thread_cond_wait_func(void* arg) {
   }
   pthread_mutex_unlock(&switch_mutex[switch_index]);
 
-  printf("cond_wait[%d] wakeup!!!\n", switch_index);
+  printf("thread_cond_wait[%d]:wait end.\n", switch_index);
 
   return (void*)switch_index;
 }
@@ -105,7 +103,7 @@ int main(int argc, FAR char *argv[])
       printf("Error; thread_cond_signal[%d].\n", i);
       exit(1);
     }
-    printf("exit thread_cond_signal[%d] return value = %d\n", i, ret[i]);
+    printf("main:thread_cond_signal[%d] exit.return value = %d\n", i, ret[i]);
   }
 
   for (i = 0; i < THREAD_NUM; i++){
@@ -113,7 +111,7 @@ int main(int argc, FAR char *argv[])
       printf("Error; thread_cond_wait[%d].\n", i);
       exit(1);
     }
-    printf("exit thread_cond_wait[%d] return value = %d\n", i, ret[i]);
+    printf("main:thread_cond_wait[%d] exit.return value = %d\n", i, ret[i]);
   }
 
   for (i = 0; i < THREAD_NUM; i++) {
