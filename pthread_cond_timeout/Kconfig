@@ -1,0 +1,25 @@
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_TIMEOUT
+	tristate "“cond_timeout_test”"
+	default y
+	---help---
+		Enable the pthread_cond_timeout app
+
+if SPRESENSE_PTHREAD_TEST_PTHREAD_COND_TIMEOUT
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_TIMEOUT_PROGNAME
+	string "Program name"
+	default "pthread_cond_timeout"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_TIMEOUT_PRIORITY
+	int "pthread_cond_timeout task priority"
+	default 100
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_TIMEOUT_STACKSIZE
+	int "pthread_cond_timeout stack size"
+	default 2048
+
+endif
