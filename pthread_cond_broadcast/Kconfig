@@ -1,0 +1,25 @@
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST
+	tristate "“cond_broadcast_test”"
+	default y
+	---help---
+		Enable the pthread_cond_broadcast app
+
+if SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST_PROGNAME
+	string "Program name"
+	default "pthread_cond_broadcast"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST_PRIORITY
+	int "pthread_cond_broadcast task priority"
+	default 100
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST_STACKSIZE
+	int "pthread_cond_broadcast stack size"
+	default 2048
+
+endif

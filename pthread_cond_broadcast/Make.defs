@@ -1,0 +1,4 @@
+
+ifneq ($(CONFIG_SPRESENSE_PTHREAD_TEST_PTHREAD_COND_BROADCAST),)
+CONFIGURED_APPS += pthread_cond_broadcast
+endif
