@@ -1,0 +1,4 @@
+
+ifneq ($(CONFIG_SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT),)
+CONFIGURED_APPS += pthread_barrier_wait
+endif

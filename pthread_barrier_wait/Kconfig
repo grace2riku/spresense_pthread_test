@@ -1,0 +1,25 @@
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT
+	tristate "“pthread_barrier_wait_test”"
+	default y
+	---help---
+		Enable the pthread_barrier_wait app
+
+if SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT_PROGNAME
+	string "Program name"
+	default "pthread_barrier_wait"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT_PRIORITY
+	int "pthread_barrier_wait task priority"
+	default 100
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_BARRIER_WAIT_STACKSIZE
+	int "pthread_barrier_wait stack size"
+	default 2048
+
+endif
