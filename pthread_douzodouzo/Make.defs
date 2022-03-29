@@ -1,0 +1,4 @@
+
+ifneq ($(CONFIG_SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO),)
+CONFIGURED_APPS += pthread_douzodouzo
+endif

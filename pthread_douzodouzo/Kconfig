@@ -1,0 +1,25 @@
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO
+	tristate "“pthread_douzodouzo_test”"
+	default y
+	---help---
+		Enable the pthread_douzodouzo app
+
+if SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO_PROGNAME
+	string "Program name"
+	default "pthread_douzodouzo"
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO_PRIORITY
+	int "pthread_douzodouzo task priority"
+	default 100
+
+config SPRESENSE_PTHREAD_TEST_PTHREAD_DOUZODOUZO_STACKSIZE
+	int "pthread_douzodouzo stack size"
+	default 2048
+
+endif
